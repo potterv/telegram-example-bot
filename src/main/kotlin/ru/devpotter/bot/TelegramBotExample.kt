@@ -45,7 +45,7 @@ class TelegramBotExample : TelegramLongPollingBot() {
                 when {
                     messageTextbot == "/start" -> "Добро пожаловать!"
                     messageTextbot.startsWith("кнопка")-> "Вы нажали кнопку"
-                    messageTextbot.startsWith("Hello")-> "Вы нажали кнопку inlineButton"
+//                    messageTextbot.startsWith("Hello")-> "Вы нажали кнопку inlineButton"
                     else -> "Вы написали: *$messageTextbot*"
                 }
             } else {
