@@ -64,14 +64,14 @@ class TelegramBotExample : TelegramLongPollingBot() {
                 listOf("кнопка 3", "кнопка 4")
             )
         )
-//        responseMessage.replyMarkup = getInlineKeyboardMurkup(
-//            listOf(
-//                listOf(InlineKeyboardButton("1"), InlineKeyboardButton("2")),
-//                listOf(InlineKeyboardButton("кнопка 5"), InlineKeyboardButton("кнопка 6"))
-//            )
-//        )
+        responseMessage.replyMarkup = getInlineKeyboardMurkup(
+            listOf(
+                listOf(InlineKeyboardButton("1"), InlineKeyboardButton("2")),
+                listOf(InlineKeyboardButton("кнопка 5"), InlineKeyboardButton("кнопка 6"))
+            )
+        )
 
-        responseMessage.replyMarkup =InlineKeyboardMarkup(listOf(listOf(InlineKeyboardButton("General Kenobi"))))
+//        responseMessage.replyMarkup =InlineKeyboardMarkup(listOf(listOf(InlineKeyboardButton("General Kenobi"))))
         execute(responseMessage)
     }
 
@@ -85,14 +85,10 @@ class TelegramBotExample : TelegramLongPollingBot() {
         return murkup
     }
 
-//    private fun getInlineKeyboardMurkup(allButtons: List<List<InlineKeyboardButton>>):InlineKeyboardMarkup{
-//        val inlineMurkup = InlineKeyboardMarkup()
-//        inlineMurkup.keyboard = allButtons.map{ rowButtons ->
-//           val row = KeyboardRow()
-//           rowButtons.forEach{rowButton -> row.add(rowButton.toString())}
-//           row
-//        }
-//        return inlineMurkup
-//    }
+    private fun getInlineKeyboardMurkup(allButtons: List<List<InlineKeyboardButton>>):InlineKeyboardMarkup{
+        val inlineMurkup = InlineKeyboardMarkup(allButtons)
+
+        return inlineMurkup
+    }
 
 }
