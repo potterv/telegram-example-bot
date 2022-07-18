@@ -1,18 +1,16 @@
 package ru.devpotter.bot
 
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
-import org.telegram.telegrambots.bots.DefaultAbsSender
-import org.telegram.telegrambots.bots.DefaultBotOptions
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
-import org.telegram.telegrambots.meta.generics.BotOptions
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow
 
 @Service
 class TelegramBotExample : TelegramLongPollingBot() {
 
-//init {
+    //init {
 //    options.proxyType= DefaultBotOptions.ProxyType.HTTP
 //    options.proxyHost="10.92.192.50"
 //    options.proxyPort = 3128
@@ -21,7 +19,7 @@ class TelegramBotExample : TelegramLongPollingBot() {
     //    @Value("\${telegram.botName}")
     private val botName: String = "PotterVV_bot"
 
-//    @Value("\${telegram.token}")
+    //    @Value("\${telegram.token}")
     private val token: String = "5494654640:AAFFEi9uedux-PjOvRcs0gxqP36Hc8i7Igc"
 
 
@@ -52,7 +50,23 @@ class TelegramBotExample : TelegramLongPollingBot() {
     private fun sendNotification(chatId: Long?, responseText: String) {
         val responseMessage = SendMessage(chatId.toString(), responseText)
         responseMessage.enableMarkdownV2(true)
+        responseMessage.replyMarkup = getReplayMurkup(
+            listOf(
+                listOf("кнопка 1", "кнопка 2"),
+                listOf("кнопка 1", "кнопка 2")
+            )
+        )
         execute(responseMessage)
+    }
+
+    private fun getReplayMurkup(allButtons: List<List<String>>): ReplyKeyboardMarkup {
+        val murkup = ReplyKeyboardMarkup()
+        murkup.keyboard = allButtons.map{rowButtons ->
+            val row =KeyboardRow()
+        rowButtons.forEach{rowButton -> row.add(rowButton.toString())}
+        row
+        }
+        return murkup
     }
 
 }
