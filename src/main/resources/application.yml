@@ -1,0 +1,3 @@
+telegram:
+  botName:PotterVV_bot
+  token:${TOKEN}
