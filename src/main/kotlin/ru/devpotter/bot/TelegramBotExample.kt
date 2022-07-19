@@ -85,10 +85,10 @@ class TelegramBotExample : TelegramLongPollingBot() {
         return murkup
     }
 
-    private fun getInlineKeyboardMurkup(allButtons: List<List<InlineKeyboardButton>>):InlineKeyboardMarkup{
-        val inlineMurkup = InlineKeyboardMarkup(allButtons)
-
-        return inlineMurkup
-    }
+//    private fun getInlineKeyboardMurkup(allButtons: List<List<InlineKeyboardButton>>):InlineKeyboardMarkup{
+//        val inlineMurkup = InlineKeyboardMarkup(allButtons)
+//
+//        return inlineMurkup
+//    }
 
 }
