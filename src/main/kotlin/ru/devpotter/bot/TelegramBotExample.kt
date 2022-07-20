@@ -43,7 +43,7 @@ class TelegramBotExample : TelegramLongPollingBot() {
                 when {
                     messageTextbot == "/start" -> "Добро пожаловать"
                     messageTextbot.startsWith("кнопка") -> "Вы нажали кнопку *$messageTextbot*"
-                    messageTextbot.startsWith("Hello") -> "Вы нажали кнопку inlineButton"
+                    messageTextbot.startsWith("Hello") -> "Вы нажали кнопку"
                     else -> "Вы написали: *$messageTextbot*"
                 }
             } else {
@@ -62,8 +62,8 @@ class TelegramBotExample : TelegramLongPollingBot() {
                 listOf("кнопка 3", "кнопка 4")
             )
         )
-//        responseMessage.replyMarkup = InlineKeyboardMarkup(listOf(listOf(InlineKeyboardButton("General Kenobi"))))
-//        responseMessage.replyMarkup = getInlineKeyboardMurkup(listOf(listOf(InlineKeyboardButton("General Kenobi"))))
+        responseMessage.replyMarkup = getInlineKeyboardMurkup(listOf(listOf(InlineKeyboardButton("General Kenobi"),
+            InlineKeyboardButton("General 2"))))
         execute(responseMessage)
     }
 
@@ -79,7 +79,8 @@ class TelegramBotExample : TelegramLongPollingBot() {
 
     private fun getInlineKeyboardMurkup(allButtons: List<List<InlineKeyboardButton>>): InlineKeyboardMarkup {
         val inlineMurkup = InlineKeyboardMarkup(allButtons)
-
+            inlineMurkup.keyboard.get(0).get(0).callbackData="fdsf"
+        inlineMurkup.keyboard.get(0).get(1).url="ya.ru"
         return inlineMurkup
     }
 
